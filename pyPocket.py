@@ -14,7 +14,7 @@ def accessToken(consumerKey, requestToken):
     parametersLogin = {'consumer_key': consumerKey, 'code': requestToken}
     headers = {'content-type': 'application/json; charset=UTF-8'}
     pocketLogin = requests.post(loginMethod, data=json.dumps(parametersLogin), headers=headers)
-    accessToken = pocketLogin.text[13:]
+    accessToken = pocketLogin.text[13:43]
     return accessToken
 
 def getData(consumerKey, accessToken):
@@ -22,6 +22,8 @@ def getData(consumerKey, accessToken):
     parametersGetData = {'consumer_key': consumerKey, 'access_token': accessToken}
     headers = {'content-type': 'application/json; charset=UTF-8'}
     getData = requests.post(getDataMethod, data=json.dumps(parametersGetData), headers=headers)
+    
+    # getData.text is a json object
     return getData.text
 
 def addData(consumerKey, accessToken, URL, title):
