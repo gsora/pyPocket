@@ -55,7 +55,10 @@ if args.getLinks:
     print("JSON: {} item/s".format(entryCounter))
 if args.add:
     print("Working...")
-    pyPocket.addData(consumerKey, aTok, args.add)
-    print("Added!")
+    try:
+        pyPocket.addData(consumerKey, aTok, args.add)
+        print("Added!")
+    except AttributeError:
+        print("Failed!")
 
 file.close()
