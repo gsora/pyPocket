@@ -26,10 +26,10 @@ def getData(consumerKey, accessToken):
     # getData.text is a json object
     return getData.text
 
-def addData(consumerKey, accessToken, URL, title):
+def addData(consumerKey, accessToken, URL):
     addDataMethod = "https://getpocket.com/v3/add"
-    parametersAddData = {'consumer_key': consumerKey, 'access_token': accessToken, 'title': title}
+    parametersAddData = {'consumer_key': consumerKey, 'access_token': accessToken, 'url': URL}
     headers = {'content-type': 'application/json; charset=UTF-8'}
-    addData = requests.post(getDataMethod, data=json.dumps(parametersGetData), headers=headers)
+    addData = requests.post(addDataMethod, data=json.dumps(parametersAddData), headers=headers)
     # TODO: not sure about this
     return addData.text
