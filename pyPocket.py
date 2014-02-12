@@ -32,4 +32,7 @@ def addData(consumerKey, accessToken, URL):
     headers = {'content-type': 'application/json; charset=UTF-8'}
     addData = requests.post(addDataMethod, data=json.dumps(parametersAddData), headers=headers)
     # TODO: not sure about this
-    return addData.text
+    if(addData.text == "400 Bad Request"):
+        raise AttributeError("Pocket returned Bad Request")
+    else:
+            return(addData.text)
