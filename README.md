@@ -20,6 +20,19 @@ addData(consumerKey, accessToken, URL) # add a link to Pocket
 ```
 As you can see, this module is self-explaining.
 
+Exceptions thrown
+-----------------
+As from [this](https://github.com/peppelakappa/pyPocket/commit/a56c557ea9327916d8401a6041a8b342dcf03f32) commit, the module will throw these exceptions when error occurs:
+
+```
+PocketCommError     # occurs in some general case
+ConsumerKeyError    # occurs when Pocket returns an error related to the consumer key
+AccessTokenError    # occurs when Pocket returns an error related to the access token
+AddDataError        # occurs generally when you're trying to push a link to Pocket without authentication or with old auth data
+```
+
+`ConsumerKeyError` and `AccessTokenError` will throw a detailed description on why your function isn't working.
+
 Alert!
 ------
 I'm making changes almost everyday to function prototypes and names, using this library in a production environment is **strongly not adviced!**
